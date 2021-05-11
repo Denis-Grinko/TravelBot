@@ -1,0 +1,33 @@
+version: '3.7'
+
+networks:
+  travel-bot-network:
+
+services:
+  bot-service:
+    build: .
+    container_name: travel-bot-service
+    ports:
+      - "8080:8080"
+      - "5001:5001"
+    working_dir: /opt/webapps/travelbot
+    depends_on:
+      - postgres
+    restart: "always"
+    env_file:
+      - ./docker/app-variables.env
+    networks:
+      - "travel-bot-network"
+
+  postgres:
+    build:
+      context: ./docker
+      dockerfile: db.Dockerfile
+    container_name: travel-bot-db
+    ports:
+      - "5432:5432"
+    restart: "unless-stopped"
+    env_file:
+      - ./docker/db-variables.env
+    networks:
+      - "travel-bot-network"
