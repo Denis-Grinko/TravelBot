@@ -7,8 +7,8 @@ mvn clean install
 затем
 docker-compose up --build
 
-Имя бота: Travel_City_Advice_bot
-Токен бота: 1882780340:AAEnrHyzv1AxnYOS7fDCCIfzm22yuiE2F1M
+Имя бота: =====
+Токен бота: =====
 
 ## Инициализированные данные в бд после старта 
 
